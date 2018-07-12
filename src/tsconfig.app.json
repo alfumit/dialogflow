@@ -6,10 +6,20 @@
     "types": []
   },
   "include": [
-    "../node_modules/api-ai-javascript/index.ts"
+    "**/*",
+    "../node_modules/api-ai-javascript/index.ts",
+    "../node_modules/api-ai-javascript/declarations.d.ts",
+    "../node_modules/api-ai-javascript/ts/ApiAiClient.ts",
+    "../node_modules/api-ai-javascript/ts/Request/TextRequest.ts",
+    "../node_modules/api-ai-javascript/ts/Request/Request.ts",
+    "../node_modules/api-ai-javascript/ts/XhrRequest.ts",
+    "../node_modules/api-ai-javascript/ts/Request/EventRequest.ts",
+    "../node_modules/api-ai-javascript/ts/ApiAiConstants.ts",
+    "../node_modules/api-ai-javascript/ts/Interfaces.ts",
+    "../node_modules/api-ai-javascript/ts/Errors.ts",
   ],
   "exclude": [
-    "src/test.ts",
+    "test.ts",
     "**/*.spec.ts"
   ]
 }
