@@ -1,12 +1,26 @@
 <h1>Angular + Twitter Bootstrap bot</h1>
 
+
 <ng-container *ngFor="let message of messages | async">
-    <div class="alert" [ngClass]="{'alert-primary': message.sentBy === 'bot',
+
+    <div *ngIf="!message.payload" class="alert" [ngClass]="{'alert-primary': message.sentBy === 'bot',
                                     'alert-secondary': message.sentBy === 'user'}">
-        {{message.content}}</div>
+        {{message.content}}
+    </div>
+    <div *ngIf="message.payload">
+        <div class="card">
+            <img class="card-img-top" [src]="message.payload.image" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{message.payload.header}}</h5>
+                <p class="card-text">{{message.payload.description}}</p>
+                <a [href]="message.payload.link" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
 </ng-container>
+
+<label for="nameField">Your message</label>
 <div class="input-group mb3">
-  <label for="nameField">Your message</label>
   <input id="nameField" class="form-control" type="text" [(ngModel)]="formValue" (keyup.enter)="sendMessage()" required>
   <div class="input-group-append">
     <button class="btn btn-primary" type="button" (click)="sendMessage()">Send</button>

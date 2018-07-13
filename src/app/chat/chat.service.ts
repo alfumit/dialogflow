@@ -7,7 +7,7 @@ import { Observable} from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class Message {
-    constructor(public content: string, public sentBy: string) {};
+    constructor(public content: string, public sentBy: string, public payload?: any) {}
 }
 
 @Injectable()
@@ -28,8 +28,12 @@ export class ChatService {
 
         return this.client.textRequest(msg)
           .then(res => {
+              console.log('Bot response', res);
               const speech = res.result.fulfillment.speech;
-              const botMessage = new Message(speech, 'bot');
+              const payload = res.result.fulfillment[1] && res.result.fulfillment[1].payload;
+              const botMessage = new Message(speech,
+                  'bot',
+                  res.result.fulfillment.messages[1] && res.result.fulfillment.messages[1].payload);
               this.update(botMessage);
           });
       }

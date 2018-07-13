@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { ChatModule } from './chat/chat.module';
+import { ReactChatModule } from './react-chat/react-chat.module';
 
 @NgModule({
     declarations: [
@@ -12,8 +13,9 @@ import { ChatModule } from './chat/chat.module';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         ChatModule,
-        NgbModule.forRoot()
+        ReactChatModule
     ],
     providers: [],
     bootstrap: [AppComponent]
