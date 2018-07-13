@@ -1,5 +1,10 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+.message-list {
+    height: 300px;
+    overflow-y: scroll;
+}
+
 .message {
     border-radius: 50px;
     margin: 0 15px 10px;

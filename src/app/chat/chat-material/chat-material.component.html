@@ -1,15 +1,17 @@
 
 <mat-card>
     <mat-card-title>Angular + Material + dialogFlow</mat-card-title>
-    <ng-container *ngFor="let message of messages | async">
+    <div class="message-list">
+        <ng-container *ngFor="let message of messages | async">
 
-        <mat-card class="messsage" [ngClass]="{'message-to': message.sentBy === 'bot',
-        'message-from': message.sentBy === 'user'}" >
-            {{message.content}}</mat-card>
-        <br>
-        <mat-divider></mat-divider>
-        <br>
-    </ng-container>
+            <mat-card class="messsage" [ngClass]="{'message-to': message.sentBy === 'bot',
+            'message-from': message.sentBy === 'user'}" >
+                {{message.content}}</mat-card>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+        </ng-container>
+    </div>
     <mat-form-field>
         <mat-label></mat-label>
         <input placeholder="Your text" [(ngModel)]="formValue" (keyup.enter)="sendMessage()" matInput>
